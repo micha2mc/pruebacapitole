@@ -22,7 +22,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SimilarProducts' 
+                $ref: './common-models.yaml#/components/schemas/SimilarProducts'
   '/product/{productId}':
     parameters:
       - schema:
@@ -40,35 +40,6 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: '#/components/schemas/ProductDetail'
+                 $ref: './common-models.yaml#/components/schemas/ProductDetail'
         '404':
           description: Product Not found
-components:
-  schemas:
-    SimilarProducts:
-      type: array
-      description: 'List of similar product Ids to a given one ordered by similarity'
-      minItems: 0
-      uniqueItems: true
-      items:
-        type: string
-        example: ["1","2","3"]
-    ProductDetail:
-      description: 'Product detail'
-      type: object
-      properties:
-        id:
-          type: string
-          minLength: 1
-        name:
-          type: string
-          minLength: 1
-        price:
-          type: number
-        availability:
-          type: boolean
-      required:
-        - id
-        - name
-        - price
-        - availability

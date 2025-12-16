@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: SimilarProducts
+  version: '1.0'
+servers:
+  - url: 'http://localhost:5000'
+paths:
+  '/product/{productId}/similar':
+    parameters:
+      - schema:
+          type: string
+        name: productId
+        in: path
+        required: true
+    get:
+      operationId: get-product-similar
+      summary: Similar products
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './common-models.yaml#/components/schemas/SimilarProducts'
+        '404':
+          description: Product Not found

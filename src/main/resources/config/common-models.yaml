@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  title: Common Models
+  version: 1.0.0
+
+paths: {}
+components:
+  schemas:
+    ProductDetail:
+      description: 'Product detail'
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        price:
+          type: number
+          format: double
+          minimum: 0
+        availability:
+          type: boolean
+      required:
+        - id
+        - name
+        - price
+        - availability
+    SimilarProducts:
+      description: 'List of similar product Ids to a given one ordered by similarity'
+      type: object
+      properties:
+        items:
+          type: array
+          minItems: 0
+          #uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ProductDetail'
+      required:
+        - items
