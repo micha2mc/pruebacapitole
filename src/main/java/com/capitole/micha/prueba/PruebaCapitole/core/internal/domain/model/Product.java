@@ -1,4 +1,5 @@
 package com.capitole.micha.prueba.PruebaCapitole.core.internal.domain.model;
 
-public class Product {
+public record Product (ProductId id, String name, double price, boolean availability){
+
 }
